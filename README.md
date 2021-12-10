@@ -3,12 +3,7 @@ This is a simple and lightweight Python extension that allows developers to enum
 
 ```python
 from windows_capture_devices import get_capture_devices
-import av
-
-if __name__ == "__main__":
-    device_list = get_capture_devices()
-
-    # TODO: pyav example 
+device_list = get_capture_devices()
 ```
 
 We use this extension in the `WebcamSource` of our [**multisensor-pipeline**](https://github.com/DFKI-Interactive-Machine-Learning/multisensor-pipeline).
@@ -23,6 +18,19 @@ We use this extension in the `WebcamSource` of our [**multisensor-pipeline**](ht
   ```commandline
   python setup.py build install
   ```
+* Build a wheel
+  ```commandline
+  pip install wheel
+  python setup.py bdist_wheel 
+  ```
+
+## PyAV Example
+We include an example for grabbing an image frame using PyAV in `demo.py`. The demo has additional dependencies:
+
+```commandline
+conda install av -c conda-forge
+pip install Pillow
+```
 
 ## Credits
 This repository is forked from https://github.com/yushulx/python-capture-device-list.
