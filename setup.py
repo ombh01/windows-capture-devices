@@ -3,7 +3,7 @@ from distutils.core import setup, Extension
 
 setup(
     name='windows-capture-devices',
-    version='1.0',
+    version='1.0.0',
     author='Michael Barz',
     author_email='michael.barz@dfki.de',
     license='MIT',
