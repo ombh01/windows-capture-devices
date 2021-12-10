@@ -125,7 +125,7 @@ PyObject* DisplayDeviceInformation(IEnumMoniker *pEnum)
 }
 
 static PyObject *
-getDeviceList(PyObject *self, PyObject *args)
+get_capture_devices(PyObject *self, PyObject *args)
 {
 	PyObject* pyList = NULL; 
 	
@@ -148,7 +148,7 @@ getDeviceList(PyObject *self, PyObject *args)
 
 static PyMethodDef Methods[] =
 {
-    {"getDeviceList", getDeviceList, METH_VARARGS, NULL},
+    {"get_capture_devices", get_capture_devices, METH_VARARGS, NULL},
     {NULL, NULL, 0, NULL}
 };
 
@@ -169,7 +169,7 @@ static int device_clear(PyObject *m) {
 
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "device",
+    "windows_capture_devices",
     NULL,
     sizeof(struct module_state),
     Methods,
@@ -182,7 +182,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return NULL
 
 PyMODINIT_FUNC
-PyInit_device(void)
+PyInit_windows_capture_devices(void)
 
 #else
 #define INITERROR return
@@ -193,14 +193,14 @@ initdevice(void)
 #if defined(IS_PY3K)
     PyObject *module = PyModule_Create(&moduledef);
 #else
-    PyObject *module = Py_InitModule("device", Methods);
+    PyObject *module = Py_InitModule("windows_capture_devices", Methods);
 #endif
 
     if (module == NULL)
         INITERROR;
     struct module_state *st = GETSTATE(module);
 
-    st->error = PyErr_NewException("dbr.Error", NULL, NULL);
+    st->error = PyErr_NewException("windows_capture_devices.Error", NULL, NULL);
     if (st->error == NULL) {
         Py_DECREF(module);
         INITERROR;

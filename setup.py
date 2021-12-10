@@ -1,11 +1,17 @@
 from distutils.core import setup, Extension
 
-module_device = Extension('device',
-                        sources = ['device.cpp'], 
-                        library_dirs=['G:\Program Files\Microsoft SDKs\Windows\v6.1\Lib']
-                      )
-
-setup (name = 'WindowsDevices',
-        version = '1.0',
-        description = 'Get device list with DirectShow',
-        ext_modules = [module_device])
+setup(
+    name='windows-capture-devices',
+    version='1.0',
+    author='Michael Barz',
+    author_email='michael.barz@dfki.de',
+    license='MIT',
+    url="https://github.com/DFKI-Interactive-Machine-Learning/python-capture-device-list",
+    description='A lightweight package to list capture devices on Windows using DirectShow',
+    ext_modules=[
+        Extension(
+            'windows_capture_devices',
+            sources=['windows_capture_devices.cpp']
+        )
+    ]
+)
